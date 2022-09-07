@@ -17,26 +17,26 @@ const TodoFooter = ({
 }: ITodoFooterProps) => {
   const footerActions = (
     <div className="footer-actions">
-      <span
+      <button
         className={`view-filter ${viewFilter === 'all' && 'active-filter'}`}
         onClick={() => setViewFilter('all')}
       >
         All
-      </span>
-      <span
+      </button>
+      <button
         className={`view-filter ${viewFilter === 'active' && 'active-filter'}`}
         onClick={() => setViewFilter('active')}
       >
         Active
-      </span>
-      <span
+      </button>
+      <button
         className={`view-filter ${
           viewFilter === 'completed' && 'active-filter'
         }`}
         onClick={() => setViewFilter('completed')}
       >
         Completed
-      </span>
+      </button>
     </div>
   )
 
@@ -47,9 +47,9 @@ const TodoFooter = ({
           {todosLength > 0 ? `${todosLength} items left` : 'no items'}
         </div>
         <div className="center">{footerActions}</div>
-        <div className="right" onClick={clearCompleted}>
+        <button className="right" onClick={clearCompleted}>
           Clear Completed
-        </div>
+        </button>
       </section>
       <section className="mobile">{footerActions}</section>
     </TodoWrapper>
@@ -87,12 +87,18 @@ const TodoWrapper = styled.div`
       justify-content: space-around;
       flex: 0.25;
       cursor: pointer;
-      :hover {
-        color: ${({ theme }) => theme.appColor};
-      }
     }
     .view-filter {
       cursor: pointer;
+    }
+  }
+  button {
+    border: none;
+    font-family: inherit;
+    background: transparent;
+    color: ${({ theme }) => theme.appDiminishedColor};
+    :hover {
+      color: ${({ theme }) => theme.appColor};
     }
   }
 `

@@ -35,7 +35,7 @@ const App = () => {
     e.preventDefault()
     setTodos([
       {
-        id: new Date().toString(),
+        id: todo.trim(),
         text: todo.trim(),
         completed: false,
       },

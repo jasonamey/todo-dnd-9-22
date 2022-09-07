@@ -61,19 +61,24 @@ function TodoItem({
           <input
             id={id}
             type="checkbox"
+            value={completed.toString()}
             checked={completed}
             onChange={changeHandler}
+            aria-label="check box"
           />
-
           <span className="checkmark"></span>
         </label>
         <span className={`item-content ${completed && 'finished'}`}>
           {todoItemContent}
         </span>
       </div>
-      <span className="delete-btn" onClick={() => deleteTodo(id)}>
+      <button
+        className="delete-btn"
+        onClick={() => deleteTodo(id)}
+        aria-label="delete button"
+      >
         <IoCloseOutline />
-      </span>
+      </button>
     </TodoItemWrapper>
   )
 }
@@ -170,8 +175,9 @@ const TodoItemWrapper = styled.li`
 
   .delete-btn {
     cursor: pointer;
-  }
-  @media only screen and (max-width: 470px) {
+    background: transparent;
+    border: none;
+    color: inherit;
   }
 `
 
